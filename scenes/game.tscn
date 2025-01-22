@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxvit1cwsy1i3"]
+
+[ext_resource type="PackedScene" uid="uid://bt1p6i6yniwmd" path="res://scenes/player.tscn" id="1_o2rh1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yv8n7"]
+distance = -70.0
+
+[sub_resource type="Gradient" id="Gradient_4pv5b"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0pm6u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_umsli"]
+width = 4096
+color_ramp = SubResource("Gradient_4pv5b")
+noise = SubResource("FastNoiseLite_0pm6u")
+
+[node name="game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_o2rh1")]
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_yv8n7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(1414.75, 3.99997)
+scale = Vector2(0.876343, 1.40234)
+skew = 0.0174533
+texture = SubResource("NoiseTexture2D_umsli")
