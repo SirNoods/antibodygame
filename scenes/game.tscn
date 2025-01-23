@@ -27,7 +27,7 @@ shape = SubResource("WorldBoundaryShape2D_yv8n7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(1414.75, 3.99997)
+position = Vector2(1396, -13)
 scale = Vector2(0.876343, 1.40234)
 skew = 0.0174533
 texture = SubResource("NoiseTexture2D_umsli")
