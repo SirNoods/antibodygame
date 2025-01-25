@@ -1,11 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://dni3xehrw8dp"]
+[gd_scene load_steps=15 format=3 uid="uid://dni3xehrw8dp"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_h4342"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eev4v"]
-size = Vector2(20, 40)
+[ext_resource type="Texture2D" uid="uid://dsabjs8coesay" path="res://assets/sprites/enzymes.png" id="2_aut75"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a71cs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itkpj"]
+atlas = ExtResource("2_aut75")
+region = Rect2(0, 2, 10, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgde3"]
+atlas = ExtResource("2_aut75")
+region = Rect2(10, 2, 10, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23umj"]
+atlas = ExtResource("2_aut75")
+region = Rect2(20, 2, 10, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrxl6"]
+atlas = ExtResource("2_aut75")
+region = Rect2(30, 2, 10, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy4v7"]
+atlas = ExtResource("2_aut75")
+region = Rect2(40, 2, 10, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t52h5"]
+atlas = ExtResource("2_aut75")
+region = Rect2(50, 2, 10, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c64bj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itkpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgde3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23umj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrxl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wy4v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t52h5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Curve" id="Curve_chmmo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.77266, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_runjm"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xsrk4"]
+radius = 35.0
+height = 80.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wm13a"]
+radius = 2.0
+height = 8.0
 
 [node name="bullet" type="RigidBody2D"]
 collision_layer = 2
@@ -13,12 +76,37 @@ collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource("1_h4342")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.38419e-07, 2.98023e-08)
-scale = Vector2(0.1, 0.05)
-shape = SubResource("RectangleShape2D_eev4v")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -5.96046e-08)
-scale = Vector2(2, 2)
 texture = SubResource("PlaceholderTexture2D_a71cs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c64bj")
+autoplay = "default"
+frame_progress = 0.614981
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -2
+position = Vector2(-2, 0)
+amount = 50
+lifetime = 0.5
+explosiveness = 0.44
+emission_shape = 3
+emission_rect_extents = Vector2(1, 2)
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_chmmo")
+color_ramp = SubResource("Gradient_runjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8.9407e-08)
+scale = Vector2(0.1, 0.05)
+shape = SubResource("CapsuleShape2D_xsrk4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wm13a")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

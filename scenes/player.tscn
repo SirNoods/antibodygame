@@ -1,21 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt1p6i6yniwmd"]
+[gd_scene load_steps=7 format=3 uid="uid://bt1p6i6yniwmd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_x0lxf"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7k4vu"]
+[ext_resource type="Texture2D" uid="uid://vmlcph0y43bf" path="res://assets/sprites/neutrophilv1.png" id="2_p62va"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghw8f"]
 radius = 7.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="Curve" id="Curve_8gssk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.44375, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_n2qfw"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtp1i"]
+radius = 8.06226
+
+[node name="player" type="CharacterBody2D"]
 collision_mask = 2147483645
 script = ExtResource("1_x0lxf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, -4.76837e-07)
-scale = Vector2(14, 14)
-texture = SubResource("PlaceholderTexture2D_7k4vu")
+texture = ExtResource("2_p62va")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ghw8f")
 one_way_collision_margin = 0.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-8, 0)
+amount = 50
+lifetime = 0.5
+randomness = 0.05
+lifetime_randomness = 0.15
+emission_shape = 3
+emission_rect_extents = Vector2(1, 6)
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_8gssk")
+color = Color(0.611765, 0.152941, 0.690196, 1)
+color_ramp = SubResource("Gradient_n2qfw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gtp1i")
+one_way_collision_margin = 0.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
