@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dni3xehrw8dp"]
+[gd_scene load_steps=17 format=3 uid="uid://dni3xehrw8dp"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_h4342"]
 [ext_resource type="Texture2D" uid="uid://dsabjs8coesay" path="res://assets/sprites/enzymes.png" id="2_aut75"]
@@ -70,6 +70,15 @@ height = 80.0
 radius = 2.0
 height = 8.0
 
+[sub_resource type="Gradient" id="Gradient_d4sd6"]
+offsets = PackedFloat32Array(0, 0.668831)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w52pg"]
+gradient = SubResource("Gradient_d4sd6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="bullet" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -83,7 +92,7 @@ texture = SubResource("PlaceholderTexture2D_a71cs")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c64bj")
 autoplay = "default"
-frame_progress = 0.614981
+frame_progress = 0.168194
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = -2
@@ -108,5 +117,9 @@ shape = SubResource("CapsuleShape2D_xsrk4")
 position = Vector2(-1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wm13a")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.956863, 0.439216, 0.392157, 1)
+texture = SubResource("GradientTexture2D_w52pg")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

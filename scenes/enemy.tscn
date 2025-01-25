@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7tnup51n07mb"]
+[gd_scene load_steps=6 format=3 uid="uid://c7tnup51n07mb"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ein61"]
 [ext_resource type="Texture2D" uid="uid://c8felo2f3gwx4" path="res://assets/sprites/bacteria1.png" id="2_rlsjg"]
@@ -8,6 +8,9 @@ radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3kvb"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5684n"]
+radius = 188.13
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_ein61")
@@ -23,4 +26,12 @@ texture = ExtResource("2_rlsjg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_d3kvb")
 
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_5684n")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]

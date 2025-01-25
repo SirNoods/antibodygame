@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt1p6i6yniwmd"]
+[gd_scene load_steps=9 format=3 uid="uid://bt1p6i6yniwmd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_x0lxf"]
 [ext_resource type="Texture2D" uid="uid://vmlcph0y43bf" path="res://assets/sprites/neutrophilv1.png" id="2_p62va"]
@@ -15,6 +15,18 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtp1i"]
 radius = 8.06226
+
+[sub_resource type="Gradient" id="Gradient_uqduo"]
+offsets = PackedFloat32Array(0, 0.675325, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0584416, 0.0584416, 0.0584416, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jivcc"]
+gradient = SubResource("Gradient_uqduo")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.857798, 0.16055)
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 2147483645
@@ -46,5 +58,12 @@ color_ramp = SubResource("Gradient_n2qfw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_gtp1i")
 one_way_collision_margin = 0.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = -2
+color = Color(0.54746, 0.1364, 0.62, 1)
+range_layer_min = -512
+range_layer_max = 512
+texture = SubResource("GradientTexture2D_jivcc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

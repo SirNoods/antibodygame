@@ -18,4 +18,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Collision with " + body.name)
 	if "enemy" in body.name:
 		body.queue_free()
-	queue_free()
+	elif "player" in body.name:
+		pass
+	else:
+		queue_free()
