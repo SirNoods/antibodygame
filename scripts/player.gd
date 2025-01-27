@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 # Constants
-const FLOW_SPEED = 50.0  # Base forward movement speed
+const BASE_FLOW_SPEED = 100.0  # Base forward movement speed
+const PUMP_AMPLITUDE = 50.0
+const PUMP_FREQUENCY = 1.0 #bps
 const VERTICAL_SPEED = 100.0  # Speed for moving up/down
 const HORIZONTAL_ADJUST_SPEED = 100.0  # Speed for left/right adjustments
 const DRAG = 0.1  # Simulates fluid drag for vertical movement
@@ -12,6 +14,7 @@ const BOOST_DURATION = 200  # Dash lasts for 2 seconds
 var is_boosting = false
 var boost_timer = 0.0
 var bullet_speed = 200
+var flow_timer = 0.0
 
 # Scene preloading
 var bullet = preload("res://scenes/bullet.tscn")
@@ -44,8 +47,9 @@ func kill():
 
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
-	# Start with a consistent forward speed
-	velocity.x = FLOW_SPEED
+	flow_timer += delta
+	var flow_variation = sin(flow_timer * PUMP_FREQUENCY * TAU) * PUMP_AMPLITUDE
+	velocity.x = BASE_FLOW_SPEED + flow_variation
 	
 	# Vertical movement (W/S or Up/Down keys)
 	if Input.is_action_pressed("move_up"):

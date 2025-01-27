@@ -18,7 +18,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Collision with " + body.name)
 	if "enemy" in body.name:
 		body.queue_free()
+		queue_free()
 	elif "player" in body.name:
 		pass
+	elif "TileMapLayer" in body.name:
+		queue_free()
+		var player = get_parent().get_node("player")
+		if player:
+			#player.kill()
+			pass
 	else:
 		queue_free()
