@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://j1drc5s71od6"]
+
+[ext_resource type="PackedScene" uid="uid://b0hrf844p0fhj" path="res://scenes/bacteria2.tscn" id="1_nusyh"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("1_nusyh")]

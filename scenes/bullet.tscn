@@ -107,7 +107,7 @@ scale_amount_curve = SubResource("Curve_chmmo")
 color_ramp = SubResource("Gradient_runjm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 8.9407e-08)
+position = Vector2(-1.1, 0)
 scale = Vector2(0.1, 0.05)
 shape = SubResource("CapsuleShape2D_xsrk4")
 

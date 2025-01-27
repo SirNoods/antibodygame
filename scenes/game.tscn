@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bt1p6i6yniwmd" path="res://scenes/player.tscn" id="1_o2rh1"]
 [ext_resource type="PackedScene" uid="uid://c7tnup51n07mb" path="res://scenes/enemy.tscn" id="3_d0vi7"]
 [ext_resource type="PackedScene" uid="uid://b5jhmcjrso3w3" path="res://scenes/parallax_background.tscn" id="4_b3r86"]
-[ext_resource type="PackedScene" uid="uid://dqpr0mhkknwr" path="res://scenes/debug_level.tscn" id="4_giwlx"]
+[ext_resource type="PackedScene" uid="uid://3e4dawq1dspo" path="res://scenes/bacteriaswarm.tscn" id="5_v4xgi"]
 
 [node name="game" type="Node2D"]
 
@@ -20,10 +20,11 @@ position = Vector2(299, -89)
 
 [node name="ParallaxBackground2" parent="." instance=ExtResource("4_b3r86")]
 
-[node name="debug_level" parent="." instance=ExtResource("4_giwlx")]
-
 [node name="enemy2" parent="." instance=ExtResource("3_d0vi7")]
 position = Vector2(520, -39)
 
 [node name="enemy3" parent="." instance=ExtResource("3_d0vi7")]
 position = Vector2(1061, -100)
+
+[node name="swarm_controller" parent="." instance=ExtResource("5_v4xgi")]
+position = Vector2(56, -41)

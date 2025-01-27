@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0hrf844p0fhj"]
+
+[ext_resource type="Script" path="res://scenes/bacteria_2.gd" id="1_3dnwi"]
+[ext_resource type="Texture2D" uid="uid://cbtbnr5ewj8u6" path="res://assets/sprites/bacteria2.png" id="1_070gu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjte"]
+size = Vector2(6.5, 4)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av8q4"]
+radius = 3.0
+height = 10.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_3dnwi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_070gu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_kpjte")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_av8q4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
