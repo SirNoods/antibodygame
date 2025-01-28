@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca1xs8067leyk"]
+
+[ext_resource type="Texture2D" uid="uid://omwhu5jloleg" path="res://assets/sprites/bloodybackground.png" id="1_epytc"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_f1e4p"]
+[ext_resource type="Texture2D" uid="uid://dwv2fj5e7frke" path="res://assets/sprites/antibodytitle.png" id="2_ijnwr"]
+[ext_resource type="FontFile" uid="uid://b45rk1e20advr" path="res://assets/fonts/KiwiSoda.ttf" id="3_qxntp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gyw6s"]
+font = ExtResource("3_qxntp")
+font_size = 32
+font_color = Color(0.968627, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2.365, -0.335)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f1e4p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_epytc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ijnwr")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "A barely researched game about the immune system"
+label_settings = SubResource("LabelSettings_gyw6s")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator5" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator6" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator7" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator8" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator9" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator10" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Seperator11" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="start_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qxntp")
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+
+[node name="options_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qxntp")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="exit_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qxntp")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/start_button" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/options_button" to="." method="_on_options_button_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/exit_button" to="." method="_on_exit_button_button_down"]

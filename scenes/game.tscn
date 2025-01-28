@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxvit1cwsy1i3"]
+[gd_scene load_steps=6 format=3 uid="uid://cxvit1cwsy1i3"]
 
 [ext_resource type="PackedScene" uid="uid://bt1p6i6yniwmd" path="res://scenes/player.tscn" id="1_o2rh1"]
+[ext_resource type="PackedScene" uid="uid://c7tnup51n07mb" path="res://scenes/enemy.tscn" id="3_d0vi7"]
 [ext_resource type="PackedScene" uid="uid://3e4dawq1dspo" path="res://scenes/bacteriaswarm.tscn" id="3_t7hfu"]
+[ext_resource type="PackedScene" uid="uid://cpgjml4rprco5" path="res://scenes/collision_test_tilemap.tscn" id="3_wxlwm"]
 [ext_resource type="PackedScene" uid="uid://b5jhmcjrso3w3" path="res://scenes/parallax_background.tscn" id="4_b3r86"]
-[ext_resource type="PackedScene" uid="uid://dqpr0mhkknwr" path="res://scenes/debug_level.tscn" id="4_ny0y2"]
 
 [node name="game" type="Node2D"]
 
@@ -15,7 +16,37 @@ position_smoothing_enabled = true
 
 [node name="ParallaxBackground2" parent="." instance=ExtResource("4_b3r86")]
 
-[node name="swarm_controller" parent="." instance=ExtResource("3_t7hfu")]
-position = Vector2(233, -75)
+[node name="collisionTestTilemap" parent="." instance=ExtResource("3_wxlwm")]
 
-[node name="debug_level" parent="." instance=ExtResource("4_ny0y2")]
+[node name="enemy" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(590, 218)
+
+[node name="enemy2" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(913, -121)
+
+[node name="enemy3" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(1773, 240)
+
+[node name="enemy4" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(1771, 320)
+
+[node name="enemy5" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(1777, 47)
+
+[node name="enemy6" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(2152, 142)
+
+[node name="enemy7" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(1978, -132)
+
+[node name="enemy8" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(2556, 48)
+
+[node name="enemy9" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(2770, -127)
+
+[node name="enemy10" parent="." instance=ExtResource("3_d0vi7")]
+position = Vector2(3710, -268)
+
+[node name="swarm_controller" parent="." instance=ExtResource("3_t7hfu")]
+position = Vector2(3267, -235)
