@@ -56,6 +56,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		pass
 	elif "player" in body.name:
 		recoil_timer = RECOIL_TIME
+	elif "TileMap" in body.name:
+		pass
 	else:
 		if body.is_bullet:
 			print("Enemy shot!")
