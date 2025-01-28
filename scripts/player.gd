@@ -6,6 +6,8 @@ const PUMP_AMPLITUDE = 50.0
 const PUMP_FREQUENCY = 1.0 #bps
 const VERTICAL_SPEED = 100.0  # Speed for moving up/down
 const HORIZONTAL_ADJUST_SPEED = 150.0  # Speed for left/right adjustments
+const LEFT_ADJUST_SPEED = 150.0  # Speed for left/right adjustments
+const RIGHT_ADJUST_SPEED = 25.0  # Speed for left/right adjustments
 const DRAG = 0.1  # Simulates fluid drag for vertical movement
 const BOOST_SPEED = 50000.0  # Speed for dashing
 const BOOST_DURATION = 200  # Dash lasts for 2 seconds
@@ -64,9 +66,9 @@ func _physics_process(delta):
 
 	# Horizontal adjustments (A/D or Left/Right keys)
 	if Input.is_action_pressed("move_left"):
-		velocity.x -= HORIZONTAL_ADJUST_SPEED
+		velocity.x -= LEFT_ADJUST_SPEED
 	elif Input.is_action_pressed("move_right"):
-		velocity.x += HORIZONTAL_ADJUST_SPEED
+		velocity.x += RIGHT_ADJUST_SPEED
 
 	# Boost mechanic (Spacebar)
 	if Input.is_action_just_pressed("boost") and not is_boosting:

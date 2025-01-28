@@ -8,7 +8,8 @@ var health = 100
 var movement_speed = 20
 
 func _ready():
-	pass
+	$progressParent/ProgressBar.value = health
+
 	
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if body.name == "player":  # Check if the body is the player
@@ -23,7 +24,9 @@ func _on_area_2d_2_body_exited(body: Node2D) -> void:
 		player = null  # Save reference to the player
 		
 func _physics_process(delta):
-	$Label.text = str(health)
+	$progressParent/Label.text = str(health)
+	$progressParent.rotation_degrees = 0 - rotation_degrees
+	
 	var player = get_parent().get_node("player")
 	if player_in_range and player !=null:
 		#position += (player.position - position)/50
@@ -38,3 +41,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("ENEMY collided with: "+ body.name)
 	if "bullet" in body.name:
 		health -= (body.damage)
+		$progressParent/ProgressBar.value = health

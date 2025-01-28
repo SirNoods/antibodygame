@@ -33,9 +33,22 @@ shape = SubResource("CircleShape2D_d3kvb")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource("CircleShape2D_5684n")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="progressParent" type="Node2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="progressParent"]
+offset_left = -16.0
+offset_top = 9.0
+offset_right = 16.0
+offset_bottom = 13.0
+step = 1.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="progressParent"]
+offset_left = -14.0
+offset_top = 8.0
+offset_right = 14.0
+offset_bottom = 31.0
+text = "100"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
