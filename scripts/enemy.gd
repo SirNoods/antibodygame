@@ -1,11 +1,17 @@
 extends CharacterBody2D
 
+const RECOIL_TIME = 0.4
+
 var motion = Vector2()
 var player_in_range = false
 var player = null #refrence the player
 var damage = 10 # change for balancing
 var health = 100
 var movement_speed = 20
+var recoil_speed = 40
+var is_bullet = false
+var recoil_timer = 0.0
+
 
 func _ready():
 	$progressParent/ProgressBar.value = health
@@ -27,18 +33,31 @@ func _physics_process(delta):
 	$progressParent/Label.text = str(health)
 	$progressParent.rotation_degrees = 0 - rotation_degrees
 	
+	
 	var player = get_parent().get_node("player")
 	if player_in_range and player !=null:
 		#position += (player.position - position)/50
 		look_at(player.position)
 		var direction = (player.position - position).normalized()
-		position += direction * movement_speed * delta
+		if recoil_timer >= 0.0:
+			recoil_timer -= delta
+			print(recoil_timer)
+			direction = (player.position + position).normalized()
+			position += direction * recoil_speed * delta /20
+		else:
+			position += direction * movement_speed * delta
 		move_and_collide(direction)
 		if health <= 0:
 			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("ENEMY collided with: "+ body.name)
-	if "bullet" in body.name:
-		health -= (body.damage)
-		$progressParent/ProgressBar.value = health
+	if "enemy" in body.name:
+		pass
+	elif "player" in body.name:
+		recoil_timer = RECOIL_TIME
+	else:
+		if body.is_bullet:
+			print("Enemy shot!")
+			health -= (body.damage)
+			$progressParent/ProgressBar.value = health

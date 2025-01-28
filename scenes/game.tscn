@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxvit1cwsy1i3"]
+[gd_scene load_steps=4 format=3 uid="uid://cxvit1cwsy1i3"]
 
 [ext_resource type="PackedScene" uid="uid://bt1p6i6yniwmd" path="res://scenes/player.tscn" id="1_o2rh1"]
 [ext_resource type="PackedScene" uid="uid://c7tnup51n07mb" path="res://scenes/enemy.tscn" id="3_d0vi7"]
 [ext_resource type="PackedScene" uid="uid://b5jhmcjrso3w3" path="res://scenes/parallax_background.tscn" id="4_b3r86"]
-[ext_resource type="PackedScene" uid="uid://dqpr0mhkknwr" path="res://scenes/debug_level.tscn" id="4_ny0y2"]
 
 [node name="game" type="Node2D"]
-
-[node name="debug_level" parent="." instance=ExtResource("4_ny0y2")]
 
 [node name="player" parent="." instance=ExtResource("1_o2rh1")]
 
@@ -16,12 +13,6 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="enemy" parent="." instance=ExtResource("3_d0vi7")]
-position = Vector2(198, -45)
+position = Vector2(215, 0)
 
 [node name="ParallaxBackground2" parent="." instance=ExtResource("4_b3r86")]
-
-[node name="enemy2" parent="." instance=ExtResource("3_d0vi7")]
-position = Vector2(520, -39)
-
-[node name="enemy3" parent="." instance=ExtResource("3_d0vi7")]
-position = Vector2(1061, -100)

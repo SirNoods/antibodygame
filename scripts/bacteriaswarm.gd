@@ -5,7 +5,7 @@ var spawn_radius = 50.0
 var bacteria_scene = preload("res://scenes/bacteria2.tscn")
 var movement_speed = 2.0
 var follow_distance = 100.0
-
+var is_bullet = false
 var bacteria_list: Array[Node2D] = []
 
 var player = null #refrence the player
@@ -83,4 +83,3 @@ func _on_bacteria_shot(bacteria):
 		bacteria_list.erase(bacteria)
 		bacteria.queue_free()
 	print("Bacteria shot!")
-	# perform actions like healing or something

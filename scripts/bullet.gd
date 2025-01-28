@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 var damage = 15
+var is_bullet = true
 
 func _ready() -> void:
 	print("Bullet loaded")

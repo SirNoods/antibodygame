@@ -11,13 +11,16 @@ const RIGHT_ADJUST_SPEED = 25.0  # Speed for left/right adjustments
 const DRAG = 0.1  # Simulates fluid drag for vertical movement
 const BOOST_SPEED = 50000.0  # Speed for dashing
 const BOOST_DURATION = 200  # Dash lasts for 2 seconds
+const BULLET_COOLDOWN = 0.5
 
 # Variables
 var is_boosting = false
 var boost_timer = 0.0
 var bullet_speed = 200
 var flow_timer = 0.0
+var bullet_cooldown_timer = 0.0
 var health = 100
+var is_bullet = false
 
 # Scene preloading
 var bullet = preload("res://scenes/bullet.tscn")
@@ -30,19 +33,21 @@ func fire():
 	"""
 	This is the shooting zone, get ready to slay
 	"""
-	# Create an instance of the bullet
-	var bullet_instance = bullet.instantiate()
-	# Offset
-	var offset_distance = 12 # adjust as needed
-	var offset = Vector2(offset_distance, 0).rotated(rotation)
-	# Set the bullet's global position and rotation
-	bullet_instance.position = position + offset  # position NOT global position??
-	bullet_instance.rotation = rotation  # Use the player's rotation
+	if bullet_cooldown_timer <= 0.0:
+		# Create an instance of the bullet
+		var bullet_instance = bullet.instantiate()
+		# Offset
+		var offset_distance = 12 # adjust as needed
+		var offset = Vector2(offset_distance, 0).rotated(rotation)
+		# Set the bullet's global position and rotation
+		bullet_instance.position = position + offset  # position NOT global position??
+		bullet_instance.rotation = rotation  # Use the player's rotation
 	
-	bullet_instance.linear_velocity = Vector2(bullet_speed, 0).rotated(rotation)
+		bullet_instance.linear_velocity = Vector2(bullet_speed, 0).rotated(rotation)
 	
 	# Add the bullet to the same parent as the player
-	get_parent().add_child(bullet_instance)
+		get_parent().add_child(bullet_instance)
+	bullet_cooldown_timer = BULLET_COOLDOWN
 
 func kill():
 	get_tree().reload_current_scene()
@@ -77,8 +82,14 @@ func _physics_process(delta):
 		velocity.x = BOOST_SPEED
 	
 	if Input.is_action_just_pressed("shoot"):
-		print("pew")
-		fire()
+		if bullet_cooldown_timer <= 0.0:
+			print("pew")
+			fire()
+		else:
+			print("Cooldown!")
+	
+	if bullet_cooldown_timer > 0.0:
+		bullet_cooldown_timer -= delta
 	
 	if is_boosting:
 		boost_timer -= delta
@@ -96,3 +107,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if "enemy" in body.name:
 		if health > 0:
 			health -= body.damage
+	if "@RigidBody" in body.name:
+		if health < 100:
+			health +=1
