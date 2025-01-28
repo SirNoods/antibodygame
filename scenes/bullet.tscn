@@ -63,8 +63,8 @@ point_count = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xsrk4"]
-radius = 35.0
-height = 80.0
+radius = 11.0
+height = 40.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wm13a"]
 radius = 2.0
@@ -80,8 +80,8 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="bullet" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 258
+collision_mask = 258
 gravity_scale = 0.0
 script = ExtResource("1_h4342")
 

@@ -1,8 +1,6 @@
 extends RigidBody2D
 
-
-# Called when the node enters the scene tree for the first time.
-
+var damage = 15
 
 func _ready() -> void:
 	print("Bullet loaded")
@@ -15,10 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Collision with " + body.name)
+	print("BULLET: Collision with " + body.name)
 	if "enemy" in body.name:
-		body.queue_free()
-		queue_free()
+		call_deferred("queue_free")
 	elif "player" in body.name:
 		pass
 	elif "RigidBody2D" in body.name:

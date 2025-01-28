@@ -15,6 +15,7 @@ var is_boosting = false
 var boost_timer = 0.0
 var bullet_speed = 200
 var flow_timer = 0.0
+var health = 100
 
 # Scene preloading
 var bullet = preload("res://scenes/bullet.tscn")
@@ -46,6 +47,7 @@ func kill():
 
 
 func _physics_process(delta):
+	$Label.text = str(health)
 	look_at(get_global_mouse_position())
 	flow_timer += delta
 	var flow_variation = sin(flow_timer * PUMP_FREQUENCY * TAU) * PUMP_AMPLITUDE
@@ -72,7 +74,7 @@ func _physics_process(delta):
 		boost_timer = BOOST_DURATION
 		velocity.x = BOOST_SPEED
 	
-	if Input.is_action_just_pressed("shoot"): # turn into is_action_just_pressed to get rid of the constant fire!!
+	if Input.is_action_just_pressed("shoot"):
 		print("pew")
 		fire()
 	
@@ -80,6 +82,9 @@ func _physics_process(delta):
 		boost_timer -= delta
 		if boost_timer <= 0:
 			is_boosting = false
+	
+	if health <= 0:
+		kill()
 
 	# Move the player with the updated velocity
 	move_and_slide()
@@ -87,4 +92,5 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if "enemy" in body.name:
-		kill()
+		if health > 0:
+			health -= body.damage

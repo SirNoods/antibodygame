@@ -7,7 +7,7 @@
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3kvb"]
-radius = 7.0
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5684n"]
 radius = 188.13
@@ -16,12 +16,14 @@ radius = 188.13
 script = ExtResource("1_ein61")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_flqfc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_rlsjg")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_d3kvb")
@@ -30,6 +32,10 @@ shape = SubResource("CircleShape2D_d3kvb")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource("CircleShape2D_5684n")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
