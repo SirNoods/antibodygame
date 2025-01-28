@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=4 uid="uid://cpgjml4rprco5"]
+[gd_scene load_steps=4 format=4 uid="uid://cpgjml4rprco5"]
 
 [ext_resource type="PackedScene" uid="uid://b5jhmcjrso3w3" path="res://scenes/parallax_background.tscn" id="1_dmitb"]
 [ext_resource type="TileSet" uid="uid://dwoq3nwsbrbp3" path="res://scenes/level_1.tres" id="2_lqbyb"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3inf1"]
+vertices = PackedVector2Array(158.18, 46, 146, 46, 130, 45.9297, 130, 34.5234, 142, 34, 162, 34, 162, -2, 146, -18.0781, 178.352, -30, 190.109, -30, 206, 15.5313, 194, -34.0781, 194, -45.4766, 205.023, -61.9922, 142, -2, 130, 13.9297, 130, 2.52344, 130.352, -14, 142, 50.3516, 126.18, 62, 126.102, 50, 206, 93, 162, 61.9297, 162, 50.5234, 174, -34, 146, -29.4766, 142.109, -14, 126.18, 30, 126.102, 18, 190.18, -50, -61, -61, 178, -50, 174, -45.6563, 94.1797, -50, 126.18, -2, 110, 2.35156, 110, 14.0078, 98, 13.9297, 98, -45.4766, 126, -18, 114, -2, 126, -29.6563, 114, 30, 114.352, 18, 98, 77.9297, 110, 66.3516, 110, 78.0078, 94.1016, 82, 114, 62, 98, 34.5234, 110, 46.0078, 158.102, 66, 126.102, 82, 130, 77.9297, 146.352, 66, 130, 66.5234, 142, 62.0078, 142.18, -34, 130, -34, 114.352, 50, -61, 93, 114.352, 82, 94.1016, 18, 110, 34.3516, 94.1797, 30, 82, 30, 82.3516, 18, 78, 14.0078, 78, 34.3516, 82.3516, 82, 78, 78.0078, 78, -45.6563, 82, -50)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13, 10), PackedInt32Array(14, 4, 15, 16, 17), PackedInt32Array(2, 1, 18, 19, 20), PackedInt32Array(10, 21, 22, 23), PackedInt32Array(5, 10, 23, 0), PackedInt32Array(9, 11, 10), PackedInt32Array(24, 8, 7, 25), PackedInt32Array(10, 5, 6), PackedInt32Array(7, 6, 14, 26), PackedInt32Array(15, 4, 3, 27, 28), PackedInt32Array(13, 12, 29), PackedInt32Array(30, 13, 29, 31), PackedInt32Array(30, 31, 32, 33), PackedInt32Array(17, 26, 14), PackedInt32Array(17, 16, 34), PackedInt32Array(35, 36, 37, 38), PackedInt32Array(39, 40, 35, 38, 41), PackedInt32Array(28, 27, 42, 43), PackedInt32Array(44, 45, 46, 47), PackedInt32Array(48, 45, 44, 49, 50), PackedInt32Array(51, 22, 21), PackedInt32Array(51, 21, 52, 53, 54), PackedInt32Array(54, 53, 55, 56), PackedInt32Array(32, 24, 25, 57), PackedInt32Array(17, 34, 40, 39), PackedInt32Array(58, 41, 38, 33), PackedInt32Array(56, 55, 19, 18), PackedInt32Array(20, 19, 48, 59), PackedInt32Array(52, 21, 60, 61), PackedInt32Array(62, 37, 36, 43, 42, 63, 49, 64), PackedInt32Array(50, 59, 48), PackedInt32Array(63, 50, 49), PackedInt32Array(62, 64, 65, 66), PackedInt32Array(67, 66, 65, 68, 30), PackedInt32Array(47, 46, 61), PackedInt32Array(47, 61, 60), PackedInt32Array(69, 47, 60), PackedInt32Array(70, 69, 60), PackedInt32Array(70, 60, 30, 68), PackedInt32Array(71, 67, 30), PackedInt32Array(72, 71, 30), PackedInt32Array(57, 58, 33, 32), PackedInt32Array(30, 33, 72)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-63, -63, 207, -64, 209, 95, -63, 95)])
+agent_radius = 2.0
 
 [node name="collisionTestTilemap" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_dmitb")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_3inf1")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAAAAPv/AAAGAAAAAAABAPv/AAAGAAAAAAACAPv/AAAGAAAAAAADAPv/AAAGAAAAAAAEAPv/AAAGAAAAAAAFAPv/AAAGAAAAAAD///v/AAAGAAAAAAAGAPv/AAAGAAAAAAAHAPv/AAAGAAAAAAAIAPv/AAAGAAAAAAAJAPv/AAAGAAAAAAAKAPv/AAAGAAAAAAALAPv/AAAGAAAAAAAMAPv/AAAGAAAAAAANAPv/AAAHAAAAAAANAPz/AAAHAAEAAAANAP3/AAAHAAEAAAANAP7/AAAHAAEAAAANAP//AAAHAAEAAAANAAAAAAAHAAEAAAANAAEAAAAHAAEAAAANAAIAAAAHAAEAAAANAAMAAAAHAAEAAAANAAQAAAAHAAEAAAANAAUAAAAHAAEAAAANAAYAAAAHAAIAAAAMAAYAAAAGAAIAAAALAAYAAAAGAAIAAAAKAAYAAAAGAAIAAAAJAAYAAAAGAAIAAAAIAAYAAAAGAAIAAAAHAAYAAAAGAAIAAAAGAAYAAAAGAAIAAAAFAAYAAAAGAAIAAAAEAAYAAAAGAAIAAAADAAYAAAAGAAIAAAACAAYAAAAGAAIAAAABAAYAAAAGAAIAAAAAAAYAAAAGAAIAAAD//wYAAAAGAAIAAAD+/wYAAAAGAAIAAAD9/wYAAAAGAAIAAAD8/wYAAAAGAAIAAAD7/wYAAAAFAAIAAAD7/wUAAAAFAAEAAAD7/wQAAAAFAAEAAAD7/wMAAAAFAAEAAAD7/wIAAAAFAAEAAAD7/wEAAAAFAAEAAAD7/wAAAAAFAAEAAAD7////AAAFAAEAAAD7//7/AAAFAAEAAAD7//3/AAAFAAEAAAD7//z/AAAFAAEAAAD7//v/AAAFAAAAAAD+//v/AAAGAAAAAAD9//v/AAAGAAAAAAD8//v/AAAGAAAAAAAJAAAAAAADAAEAAAAJAAEAAAADAAEAAAAFAP7/AAADAAEAAAAFAP3/AAADAAAAAAAFAP//AAADAAEAAAAFAAAAAAADAAIAAAAFAAQAAAADAAIAAAAFAAIAAAADAAAAAAAFAAMAAAADAAEAAAAJAAMAAAAEAAIAAAAHAAQAAAAEAAIAAAAHAAAAAAAEAAIAAAAHAAIAAAAEAAIAAAAIAP7/AAAEAAIAAAALAP3/AAAEAAIAAAA=")
 tile_set = ExtResource("2_lqbyb")
