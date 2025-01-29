@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgmappnj5v7b8"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_73tv0"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_73tv0")
+
+[node name="hplabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="levellabel" type="Label" parent="."]
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 47.0
+
+[node name="currentxplabel" type="Label" parent="."]
+offset_top = 49.0
+offset_right = 40.0
+offset_bottom = 72.0
+
+[node name="requiredxplabel" type="Label" parent="."]
+offset_top = 89.0
+offset_right = 40.0
+offset_bottom = 112.0
+
+[node name="bulletcooldownlabel" type="Label" parent="."]
+offset_top = 121.0
+offset_right = 40.0
+offset_bottom = 144.0

@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("BULLET: Collision with " + body.name)
 	if "enemy" in body.name:
+		var player = get_parent().get_node("player")
+		damage = damage*player.strength
 		call_deferred("queue_free")
 	elif "player" in body.name:
 		pass

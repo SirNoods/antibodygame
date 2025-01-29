@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgmappnj5v7b8"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_73tv0"]
+[ext_resource type="Texture2D" uid="uid://bjl85lc6v7b4x" path="res://assets/sprites/hudbadge.png" id="2_ruicc"]
+[ext_resource type="FontFile" uid="uid://b45rk1e20advr" path="res://assets/fonts/KiwiSoda.ttf" id="3_8e4tl"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_73tv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(269, 727)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ruicc")
+
+[node name="hplabel" type="Label" parent="."]
+offset_left = 155.0
+offset_top = 604.0
+offset_right = 243.0
+offset_bottom = 636.0
+theme_override_fonts/font = ExtResource("3_8e4tl")
+theme_override_font_sizes/font_size = 32
+text = "HP :100/100"
+horizontal_alignment = 2
+
+[node name="currentxplabel" type="Label" parent="."]
+offset_left = 198.0
+offset_top = 655.0
+offset_right = 238.0
+offset_bottom = 687.0
+theme_override_fonts/font = ExtResource("3_8e4tl")
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="requiredxplabel" type="Label" parent="."]
+offset_left = 327.0
+offset_top = 655.0
+offset_right = 367.0
+offset_bottom = 687.0
+theme_override_fonts/font = ExtResource("3_8e4tl")
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="bulletcooldownlabel" type="Label" parent="."]
+offset_top = 121.0
+offset_right = 40.0
+offset_bottom = 144.0
+
+[node name="levellabel" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 622.0
+offset_right = 88.0
+offset_bottom = 686.0
+theme_override_fonts/font = ExtResource("3_8e4tl")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+
+[node name="rank" type="Label" parent="."]
+offset_left = 52.0
+offset_top = 608.0
+offset_right = 200.0
+offset_bottom = 672.0
+theme_override_fonts/font = ExtResource("3_8e4tl")
+theme_override_font_sizes/font_size = 16
+text = "Level"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/bacteriaswarm.gd" id="1_peodh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0iwwc"]
-radius = 316.078
+radius = 816.01
 
 [node name="swarm_controller" type="Node2D"]
 script = ExtResource("1_peodh")

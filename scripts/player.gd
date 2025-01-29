@@ -16,11 +16,44 @@ const BULLET_COOLDOWN = 0.5
 # Variables
 var is_boosting = false
 var boost_timer = 0.0
-var bullet_speed = 200
 var flow_timer = 0.0
 var bullet_cooldown_timer = 0.0
+
+# stats
 var health = 100
+var bullet_speed = 200
+var strength = 1.0
+var cdr = 1.0
+
 var is_bullet = false
+
+# Leveling System
+var level = 1
+var experience = 0
+var experience_total = 0
+var experience_required = 2
+
+func get_required_experience(level):
+	return round(pow(level, 1.2) + level * 2)
+
+func gain_experience(amount):
+	experience_total += amount
+	experience += amount
+	while experience >= experience_required:
+		experience -= experience_required
+		level_up()
+
+func level_up():
+	level +=1
+	experience_required = get_required_experience(level + 1)
+	var stats = ['health', 'strength', 'cdr', 'bullet_speed']
+	heal_max()
+	strength += 0.1
+	cdr += 0.2
+	bullet_speed += 10
+	
+func heal_max():
+	health = 100
 
 # Scene preloading
 var bullet = preload("res://scenes/bullet.tscn")
@@ -47,14 +80,14 @@ func fire():
 	
 	# Add the bullet to the same parent as the player
 		get_parent().add_child(bullet_instance)
-	bullet_cooldown_timer = BULLET_COOLDOWN
+	bullet_cooldown_timer = BULLET_COOLDOWN/cdr
 
 func kill():
 	get_tree().reload_current_scene()
 
 
 func _physics_process(delta):
-	$Label.text = str(health)
+	#$Label.text = "hp "+ str(health) + "str "+ str(strength) + "cdr "+ str(cdr) + "bs "+ str(bullet_speed) + "xp" + str(experience_total)
 	look_at(get_global_mouse_position())
 	flow_timer += delta
 	var flow_variation = sin(flow_timer * PUMP_FREQUENCY * TAU) * PUMP_AMPLITUDE
@@ -109,4 +142,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			health -= body.damage
 	if "@RigidBody" in body.name:
 		if health < 100:
-			health +=1
+			health +=2
+			gain_experience(1)

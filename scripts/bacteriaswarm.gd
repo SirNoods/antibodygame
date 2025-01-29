@@ -3,7 +3,7 @@ extends Node2D
 var swarm_size = 10 # number of bacteria
 var spawn_radius = 100
 var bacteria_scene = preload("res://scenes/bacteria2.tscn")
-var movement_speed = 5.0
+var movement_speed = 10.0
 var follow_distance = 100.0
 var is_bullet = false
 var bacteria_list: Array[Node2D] = []
@@ -37,7 +37,7 @@ func spawn_swarm() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	move_swarm(delta)
-	apply_repulsion(delta)
+	#apply_repulsion(delta)
 	
 func get_valid_spawn_point(radius: float, max_attempts: int = 10) -> Vector2:
 	var space_state = get_world_2d().direct_space_state
