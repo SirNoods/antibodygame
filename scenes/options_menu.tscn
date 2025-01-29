@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://em62fxc3au1t"]
+[gd_scene load_steps=4 format=3 uid="uid://em62fxc3au1t"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_2yw7d"]
 [ext_resource type="FontFile" uid="uid://b45rk1e20advr" path="res://assets/fonts/KiwiSoda.ttf" id="1_xm7cu"]
+[ext_resource type="PackedScene" uid="uid://dikoovd227l5q" path="res://scenes/settings_tab_container.tscn" id="3_sbh8r"]
 
 [node name="options_menu" type="Control"]
 layout_mode = 3
@@ -19,10 +20,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -36,9 +37,13 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="settings_tab_container" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_sbh8r")]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="options_exit_button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_xm7cu")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
