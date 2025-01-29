@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ca1xs8067leyk"]
 
 [ext_resource type="Texture2D" uid="uid://omwhu5jloleg" path="res://assets/sprites/bloodybackground.png" id="1_epytc"]
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_f1e4p"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f1e4p"]
 [ext_resource type="Texture2D" uid="uid://dwv2fj5e7frke" path="res://assets/sprites/antibodytitle.png" id="2_ijnwr"]
 [ext_resource type="FontFile" uid="uid://b45rk1e20advr" path="res://assets/fonts/KiwiSoda.ttf" id="3_qxntp"]
 

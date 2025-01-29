@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0hrf844p0fhj"]
 
-[ext_resource type="Script" path="res://scenes/bacteria_2.gd" id="1_3dnwi"]
+[ext_resource type="Script" path="res://scripts/bacteria_2.gd" id="1_3dnwi"]
 [ext_resource type="Texture2D" uid="uid://cbtbnr5ewj8u6" path="res://assets/sprites/bacteria2.png" id="1_070gu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjte"]

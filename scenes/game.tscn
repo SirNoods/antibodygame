@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bt1p6i6yniwmd" path="res://scenes/player.tscn" id="1_o2rh1"]
 [ext_resource type="PackedScene" uid="uid://c7tnup51n07mb" path="res://scenes/enemy.tscn" id="3_d0vi7"]
 [ext_resource type="PackedScene" uid="uid://3e4dawq1dspo" path="res://scenes/bacteriaswarm.tscn" id="3_t7hfu"]
-[ext_resource type="PackedScene" uid="uid://cpgjml4rprco5" path="res://scenes/collision_test_tilemap.tscn" id="3_wxlwm"]
+[ext_resource type="PackedScene" path="res://scenes/collision_test_tilemap.tscn" id="3_wxlwm"]
 [ext_resource type="PackedScene" uid="uid://b5jhmcjrso3w3" path="res://scenes/parallax_background.tscn" id="4_b3r86"]
 
 [node name="game" type="Node2D"]

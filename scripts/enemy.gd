@@ -27,9 +27,9 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 		
 func _on_area_2d_2_body_exited(body: Node2D) -> void:
 	if body.name == "player":  # Check if the body is the player
-		print("PLAYER EXITED")
-		player_in_range = false
-		player = null  # Save reference to the player
+		print("PLAYER EXITED RANGE")
+		#player_in_range = false
+		#player = null  # Save reference to the player
 		
 func _physics_process(delta):
 	$progressParent/Label.text = str(health)
