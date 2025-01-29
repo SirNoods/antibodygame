@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca1xs8067leyk"]
+[gd_scene load_steps=7 format=3 uid="uid://ca1xs8067leyk"]
 
 [ext_resource type="Texture2D" uid="uid://omwhu5jloleg" path="res://assets/sprites/bloodybackground.png" id="1_epytc"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f1e4p"]
 [ext_resource type="Texture2D" uid="uid://dwv2fj5e7frke" path="res://assets/sprites/antibodytitle.png" id="2_ijnwr"]
 [ext_resource type="FontFile" uid="uid://b45rk1e20advr" path="res://assets/fonts/KiwiSoda.ttf" id="3_qxntp"]
+[ext_resource type="PackedScene" uid="uid://em62fxc3au1t" path="res://scenes/options_menu.tscn" id="5_2gs3y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gyw6s"]
 font = ExtResource("3_qxntp")
@@ -113,6 +114,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qxntp")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+
+[node name="options_menu" parent="." instance=ExtResource("5_2gs3y")]
+visible = false
+layout_mode = 1
 
 [connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/start_button" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/options_button" to="." method="_on_options_button_button_down"]
