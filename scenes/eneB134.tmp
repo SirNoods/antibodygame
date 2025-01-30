@@ -147,7 +147,7 @@ texture_scale = 0.5
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5p0lb")
 autoplay = "default"
-frame_progress = 0.417129
+frame_progress = 0.0381565
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
