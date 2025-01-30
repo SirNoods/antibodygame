@@ -27,6 +27,9 @@ var cdr = 1.0
 
 var is_bullet = false
 
+# reference scene
+
+
 # Leveling System
 var level = 1
 var experience = 0
@@ -87,17 +90,18 @@ func kill():
 
 
 func _physics_process(delta):
+	#print(scene.name)
 	#$Label.text = "hp "+ str(health) + "str "+ str(strength) + "cdr "+ str(cdr) + "bs "+ str(bullet_speed) + "xp" + str(experience_total)
 	look_at(get_global_mouse_position())
 	flow_timer += delta
-	var flow_variation = sin(flow_timer * PUMP_FREQUENCY * TAU) * PUMP_AMPLITUDE
-	velocity.x = BASE_FLOW_SPEED + flow_variation
+	var flow_variation = sin(flow_timer * PUMP_FREQUENCY * TAU) * scale_movement(PUMP_AMPLITUDE)
+	velocity.x = scale_movement(BASE_FLOW_SPEED) + flow_variation
 	
 	# Vertical movement (W/S or Up/Down keys)
 	if Input.is_action_pressed("move_up"):
-		velocity.y = -VERTICAL_SPEED
+		velocity.y = -scale_movement(VERTICAL_SPEED)
 	elif Input.is_action_pressed("move_down"):
-		velocity.y = VERTICAL_SPEED
+		velocity.y = scale_movement(VERTICAL_SPEED)
 	else:
 		# Apply drag to vertical movement
 		velocity.y = lerp(velocity.y, 0.0, DRAG)
@@ -106,7 +110,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= LEFT_ADJUST_SPEED
 	elif Input.is_action_pressed("move_right"):
-		velocity.x += RIGHT_ADJUST_SPEED
+		velocity.x += scale_movement(RIGHT_ADJUST_SPEED)
 
 	# Boost mechanic (Spacebar)
 	if Input.is_action_just_pressed("boost") and not is_boosting:
@@ -144,3 +148,33 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if health < 100:
 			health +=2
 			gain_experience(1)
+
+func scale_movement(base_speed: float) -> float:
+	# Get all movement areas
+	var areas = get_tree().get_nodes_in_group("movement_areas")
+	
+	# Track the strongest (highest) speed modifier
+	var max_modifier = 1.0  # Default is normal speed
+
+	for area in areas:
+		if area is Area2D and area.overlaps_body(self):
+			#print(area.name)
+			var modifier = 1.0  # Default to no change
+			
+			# Determine modifier based on area name
+			if "superslow" in area.name:
+				modifier = 0.5
+			elif "slow" in area.name:
+				modifier = 0.75
+			elif "normal" in area.name:
+				modifier = 1.0
+			elif "fast" in area.name:
+				modifier = 1.5
+			elif "superfast" in area.name:
+				modifier = 2.0
+			
+			# Keep only the highest modifier encountered
+			max_modifier = max(max_modifier, modifier)
+
+	return base_speed * max_modifier
+	

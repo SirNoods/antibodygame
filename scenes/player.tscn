@@ -29,6 +29,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.857798, 0.16055)
 
 [node name="player" type="CharacterBody2D"]
+collision_layer = 32769
 collision_mask = 2147483645
 script = ExtResource("1_x0lxf")
 
@@ -61,9 +62,11 @@ one_way_collision_margin = 0.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -2
-color = Color(0.54746, 0.1364, 0.62, 1)
+color = Color(1, 0.46, 0.91, 1)
+range_z_max = 10
 range_layer_min = -512
 range_layer_max = 512
 texture = SubResource("GradientTexture2D_jivcc")
+texture_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

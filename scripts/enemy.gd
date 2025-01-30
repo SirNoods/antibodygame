@@ -57,13 +57,14 @@ func _physics_process(delta):
 		#move_and_collide(direction)
 		
 	if health <= 0:
-		var player = get_parent().get_node("player")
+		var player = get_parent().get_parent().get_parent().get_node("player")
 		print("killed enemy!")
 		player.gain_experience(3)
 		queue_free()
 
 func makepath() -> void:
-	var player = get_parent().get_node("player")
+	var player = get_parent().get_parent().get_parent().get_node("player")
+	print(player)
 	nav_agent.target_position = player.global_position
 	print("makepathed " + str(player.global_position))
 	
