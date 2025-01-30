@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxvit1cwsy1i3"]
+[gd_scene load_steps=7 format=3 uid="uid://cxvit1cwsy1i3"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_4pn5y"]
 [ext_resource type="PackedScene" uid="uid://bt1p6i6yniwmd" path="res://scenes/player.tscn" id="1_o2rh1"]
 [ext_resource type="PackedScene" uid="uid://bgmappnj5v7b8" path="res://scenes/hud.tscn" id="2_dnh0s"]
-[ext_resource type="PackedScene" uid="uid://c80pmo0et1bul" path="res://scenes/thelevel.tscn" id="4_0bv1b"]
+[ext_resource type="PackedScene" uid="uid://dvi1uqhw31qf3" path="res://scenes/thelevel.tscn" id="4_0bv1b"]
 [ext_resource type="PackedScene" uid="uid://b5jhmcjrso3w3" path="res://scenes/parallax_background.tscn" id="4_b3r86"]
+[ext_resource type="PackedScene" uid="uid://d2mm3jwd8rknc" path="res://scenes/pause_menu.tscn" id="6_ns8ob"]
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_4pn5y")
 
 [node name="player" parent="." instance=ExtResource("1_o2rh1")]
 
@@ -18,3 +21,6 @@ position_smoothing_enabled = true
 [node name="ParallaxBackground2" parent="." instance=ExtResource("4_b3r86")]
 
 [node name="thelevel" parent="." instance=ExtResource("4_0bv1b")]
+
+[node name="Control" parent="." instance=ExtResource("6_ns8ob")]
+visible = false

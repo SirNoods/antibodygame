@@ -73,7 +73,10 @@ wait_time = 0.2
 autostart = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+energy = 0.5
 texture = SubResource("GradientTexture2D_hspfg")
+texture_scale = 0.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

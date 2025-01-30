@@ -63,10 +63,10 @@ one_way_collision_margin = 0.0
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -2
 color = Color(1, 0.46, 0.91, 1)
+energy = 0.5
 range_z_max = 10
 range_layer_min = -512
 range_layer_max = 512
 texture = SubResource("GradientTexture2D_jivcc")
-texture_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

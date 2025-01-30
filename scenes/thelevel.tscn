@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c80pmo0et1bul"]
+[gd_scene load_steps=16 format=4 uid="uid://dvi1uqhw31qf3"]
 
 [ext_resource type="TileSet" uid="uid://dwoq3nwsbrbp3" path="res://scenes/level_1.tres" id="1_vd5l0"]
 [ext_resource type="FontFile" uid="uid://b45rk1e20advr" path="res://assets/fonts/KiwiSoda.ttf" id="2_l1mg8"]
@@ -203,4 +203,4 @@ position = Vector2(3621, -1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color(0, 0, 0, 1)
+color = Color(0.389287, 0.389287, 0.389286, 1)
