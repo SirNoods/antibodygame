@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dni3xehrw8dp"]
+[gd_scene load_steps=19 format=3 uid="uid://dni3xehrw8dp"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_h4342"]
 [ext_resource type="Texture2D" uid="uid://dsabjs8coesay" path="res://assets/sprites/enzymes.png" id="2_aut75"]
+[ext_resource type="AudioStream" uid="uid://ojwj4mjslc4d" path="res://assets/sound/shootsound.mp3" id="3_vhbiv"]
+[ext_resource type="AudioStream" uid="uid://fbdatjxr5iji" path="res://assets/sound/absorbsound.wav" id="4_8sfoo"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a71cs"]
 
@@ -121,5 +123,18 @@ shape = SubResource("CapsuleShape2D_wm13a")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.956863, 0.439216, 0.392157, 1)
 texture = SubResource("GradientTexture2D_w52pg")
+
+[node name="Shootsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vhbiv")
+volume_db = -7.0
+pitch_scale = 1.08
+autoplay = true
+
+[node name="Absorbsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8sfoo")
+volume_db = -12.875
+pitch_scale = 0.92
+
+[node name="DeletionTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

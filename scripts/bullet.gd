@@ -2,10 +2,12 @@ extends RigidBody2D
 
 var damage = 15
 var is_bullet = true
-
+signal absorbed
+@onready var absorbsound: AudioStreamPlayer = $Absorbsound
+@onready var deletion_timer: Timer = $DeletionTimer # Add timer to scene
 func _ready() -> void:
 	print("Bullet loaded")
-	
+	var absorbsound: AudioStreamPlayer = $Absorbsound
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -30,9 +32,22 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 	elif "TileMapLayer" in body.name:
 		queue_free()
-		var player = get_parent().get_node("player")
-		if player:
-			#player.kill()
-			pass
+		#$Area2D.monitoring = false
+		#set_physics_process(false)
+		#collision_layer = 0
+		#collision_mask = 0
+		#hide()
+		#play_and_delete()
 	else:
 		queue_free()
+		
+func play_and_delete():
+	absorbsound.play()
+	set_physics_process(false)
+	collision_layer = 0
+	collision_mask = 0
+	visible = false
+	deletion_timer.start(absorbsound.stream.get_length())
+	
+func _on_deletion_timer_timeout():
+	queue_free()

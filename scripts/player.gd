@@ -26,6 +26,7 @@ var strength = 1.0
 var cdr = 1.0
 
 var is_bullet = false
+@onready var sfx_heartbeat: AudioStreamPlayer = $sfx_heartbeat
 
 # reference scene
 
